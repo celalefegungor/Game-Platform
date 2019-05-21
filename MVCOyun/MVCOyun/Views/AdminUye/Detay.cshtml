@@ -1,0 +1,47 @@
+﻿@model MVCOyun.Models.EntityFramework.Uye
+
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="jumbotron" style="text-align:center;background-color:#d02107">
+   
+
+
+    <img src="@Model.Foto" width="30%" class="rounded-circle" />
+    <br />
+    <br />
+    <br />
+    <table class="table table-bordered" style="background-color:black;color:white;text-align:center;">
+        <thead>
+            <tr>
+
+                <th>Ad Soyad</th>
+                <th>Email</th>
+                <th>Doğum Tarihi</th>
+                <th>Yetki</th>
+                <th>Şifre</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.AdSoyad</td>
+                <td>@Model.Email</td>
+                <td>@Model.DogumTarihi.Value.ToString("dd-MM-yyyy")</td>
+                @if (Model.Yetkiid == 1)
+                {
+                    <td>Admin</td>
+                }
+                else
+                {
+                    <td>Kullanıcı</td>
+                }
+                <td>@Model.Sifre</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+
+    </div>

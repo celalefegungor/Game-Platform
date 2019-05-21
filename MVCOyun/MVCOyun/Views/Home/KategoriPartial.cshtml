@@ -1,0 +1,48 @@
+﻿@model List<MVCOyun.Models.EntityFramework.Kategori>
+@{ 
+    Layout = null;
+}
+
+
+   <br />
+    <div class="list-group" style="text-align:center">
+        @foreach (var item in Model)
+        {
+            <a href="/Home/KategoriOyun/@item.id" class="list-group-item" style="background-color:black;color:yellow">@item.Ad (@item.Oyuns.Count())</a>
+        }
+
+    </div>
+
+
+    
+
+
+
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>*@

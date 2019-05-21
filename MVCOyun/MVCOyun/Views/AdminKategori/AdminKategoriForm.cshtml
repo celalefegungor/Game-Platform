@@ -1,0 +1,17 @@
+﻿@model MVCOyun.Models.EntityFramework.Kategori
+@{
+    ViewBag.Title = "AdminKategoriForm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Kaydet", "AdminKategori", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.id)
+    <div class="form-group" style="width:20%;text-align:center">
+        @Html.LabelFor(x => x.Ad)
+        @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Kaydet</button>
+    <td><a href="/AdminKategori/Index" class="btn btn-default"><i class="fa fa-backward"> Geri Dön</i></a></td>
+}
+

@@ -1,0 +1,45 @@
+﻿@model MVCOyun.ViewModels.OyunFormViewModel
+@{
+    ViewBag.Title = "AdminOyunForm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Kaydet", "AdminOyun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.Oyun.id)
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.KategoriId)
+        @Html.DropDownListFor(x => x.Oyun.KategoriId, new SelectList(Model.Kategoris, "id", "Ad"), "--Oyun Kategorisini Seçiniz--", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.Ad)
+        @Html.TextBoxFor(x => x.Oyun.Ad, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.Foto)
+        <input type="file" name="Foto" id="Foto" accept=".png,.jpg,.JPEG,.gif" class="form-control" />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.Icerik)
+        @Html.TextAreaFor(x => x.Oyun.Icerik, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.Sirket)
+        @Html.TextBoxFor(x => x.Oyun.Sirket, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.Fiyat)
+        @Html.TextBoxFor(x => x.Oyun.Fiyat, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.Puan)
+        @Html.TextBoxFor(x => x.Oyun.Puan, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Oyun.Tarih)
+        @Html.TextBoxFor(x => x.Oyun.Tarih, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}
+
+

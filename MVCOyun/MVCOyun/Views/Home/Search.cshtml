@@ -1,0 +1,17 @@
+﻿
+<br />
+<div class="card my-4" style="background-color:black;color:white">
+    <h5 class="card-header">Oyun Ara</h5>
+    <div class="card-body">
+        @using (Html.BeginForm("Searchs", "Home", FormMethod.Post))
+    {
+        <div class="input-group">
+            <input id="Ara" name="Ara" type="text" class="form-control" placeholder="Oyun Adı..">
+            <span class="input-group-btn">
+                <button value="Ara" class="btn btn-danger" type="button">Ara</button>
+            </span>
+        </div>
+}
+    </div>
+</div>
+

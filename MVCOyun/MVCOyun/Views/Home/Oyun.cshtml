@@ -1,0 +1,68 @@
+﻿@model List<MVCOyun.Models.EntityFramework.Oyun>
+@{
+    ViewBag.Title = "Oyun";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .aw-zoom {
+        position: relative;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
+        -webkit-transition: all .3s ease-in;
+        -ms-transition: all .3s ease-in;
+
+
+    }
+        .aw-zoom:hover {
+            z-index: 2;
+            -webkit-transform: scale(2.5);
+            -ms-transform: scale(2.5);
+            -moz-transform: scale(2.5);
+            transform: scale(2.5);
+        }
+
+
+</style>
+<br />
+<br />
+<div class="jumbotron" style="background-color:whitesmoke">
+    <table class="table table-border" style="text-align:center;border:solid 5px;" id="tblOyun">
+        <thead>
+            <tr>
+                <th>Kapak Görseli</th>
+                <th>Oyun Adı</th>
+                <th>Kategori</th>
+                <th>Yapım</th>
+                
+            </tr>
+        </thead>
+        <tbody style="border:solid 5px;">
+            @foreach (var item in Model)
+            {
+                <tr style="border:solid 5px;">
+               <td width="20%"><img class="aw-zoom" src="@item.Foto" width="100%"  /></td>
+               <td> <a href="/Home/Detay/@item.id">@item.Ad</a></td>
+                    <td>@item.Kategori.Ad</td>
+                    <td>@item.Sirket</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#tblOyun').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+            }
+        });
+    });
+
+   
+</script>

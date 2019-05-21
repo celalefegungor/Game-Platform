@@ -1,0 +1,32 @@
+﻿@model List<MVCOyun.Models.EntityFramework.Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="background-color:black;color:white">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kategori Adı</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.Ad</td>
+            <td><a href="/AdminKategori/Guncelle/@item.id" class="btn btn-warning"><i class="fa fa-pencil"> Güncelle</i></a></td>
+            <td><a href="/AdminKategori/Sil/@item.id" class="btn btn-danger"><i class="fa fa-trash-o"> Sil</i></a></td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+<div style="text-align:right">
+    <a href="/AdminKategori/Yeni" class="btn btn-primary"><i class="fa fa-bar-chart-o"> Yeni Kategori</i></a>
+</div>

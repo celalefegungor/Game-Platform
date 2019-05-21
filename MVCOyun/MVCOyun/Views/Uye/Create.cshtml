@@ -1,0 +1,53 @@
+﻿@model MVCOyun.Models.EntityFramework.Uye
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("Create", "Uye", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+  <br />
+
+ 
+<div class="jumbotron" style="text-align:center;background-color:black;color:yellow;width:60%;margin-left:180px;">
+    <h3>Hemen Kaydol!</h3>
+    <br />
+    <img src="https://images-s3.services.local.ch/bp/info-image-ad/62/624ce9b3f25575c5851240561e75ff8660bd8a44/data.png?size=480x&v=2&sig=f61e4364af90f47f2322c4d220fd82713e9fe5410f89ee8202b5b919905fa23f" class="rounded-circle" width="40%"/>
+    @Html.HiddenFor(x => x.id)
+    <div class="form-group">
+
+        <br />
+        @Html.LabelFor(x => x.AdSoyad)
+        @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.AdSoyad)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kullaniciadi)
+        @Html.TextBoxFor(x => x.Kullaniciadi, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Kullaniciadi)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.DogumTarihi)
+        @Html.TextBoxFor(x => x.DogumTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(x => x.DogumTarihi)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Foto)
+        <input type="file" id="Foto" name="Foto" accept=".jpeg,.png,.jpg,.gif" class="form-control" />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Sifre)
+        @Html.PasswordFor(x => x.Sifre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Sifre)
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Kaydol !</button>
+</div>
+}
+

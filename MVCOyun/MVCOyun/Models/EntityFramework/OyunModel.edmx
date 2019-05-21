@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OyunModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Oyun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Foto" Type="nvarchar(max)" />
+          <Property Name="Icerik" Type="nvarchar(max)" />
+          <Property Name="Puan" Type="int" />
+          <Property Name="Sirket" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="smalldatetime" />
+          <Property Name="Fiyat" Type="int" />
+        </EntityType>
+        <EntityType Name="Uye">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yetkiid" Type="int" />
+          <Property Name="Kullaniciadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="40" />
+          <Property Name="DogumTarihi" Type="smalldatetime" />
+          <Property Name="Foto" Type="nvarchar(max)" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_Oyun_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+          <End Role="Oyun" Type="Self.Oyun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Oyun">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OyunModelStoreContainer">
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oyun" EntityType="Self.Oyun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Oyun_Kategori" Association="Self.FK_Oyun_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Oyun" EntitySet="Oyun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OyunModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Oyuns" Relationship="OyunModel.FK_Oyun_Kategori" FromRole="Kategori" ToRole="Oyun" />
+        </EntityType>
+        <EntityType Name="Uye">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yetkiid" Type="Int32" />
+          <Property Name="Kullaniciadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AdSoyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="OyunEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kategoris" EntityType="Self.Kategori" />
+          <EntitySet Name="Uyes" EntityType="Self.Uye" />
+          <EntitySet Name="Oyuns" EntityType="OyunModel.Oyun" />
+          <AssociationSet Name="FK_Oyun_Kategori" Association="OyunModel.FK_Oyun_Kategori">
+            <End Role="Kategori" EntitySet="Kategoris" />
+            <End Role="Oyun" EntitySet="Oyuns" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Oyun">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Puan" Type="Int32" />
+          <Property Name="Sirket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Fiyat" Type="Int32" />
+          <NavigationProperty Name="Kategori" Relationship="OyunModel.FK_Oyun_Kategori" FromRole="Oyun" ToRole="Kategori" />
+        </EntityType>
+        <Association Name="FK_Oyun_Kategori">
+          <End Type="OyunModel.Kategori" Role="Kategori" Multiplicity="0..1" />
+          <End Type="OyunModel.Oyun" Role="Oyun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Oyun">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OyunModelStoreContainer" CdmEntityContainer="OyunEntities">
+          <EntitySetMapping Name="Kategoris">
+            <EntityTypeMapping TypeName="OyunModel.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uyes">
+            <EntityTypeMapping TypeName="OyunModel.Uye">
+              <MappingFragment StoreEntitySet="Uye">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Yetkiid" ColumnName="Yetkiid" />
+                <ScalarProperty Name="Kullaniciadi" ColumnName="Kullaniciadi" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oyuns">
+            <EntityTypeMapping TypeName="OyunModel.Oyun">
+              <MappingFragment StoreEntitySet="Oyun">
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Sirket" ColumnName="Sirket" />
+                <ScalarProperty Name="Puan" ColumnName="Puan" />
+                <ScalarProperty Name="Icerik" ColumnName="Icerik" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

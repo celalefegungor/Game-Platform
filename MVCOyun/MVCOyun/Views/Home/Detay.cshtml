@@ -1,0 +1,86 @@
+﻿@model MVCOyun.Models.EntityFramework.Oyun
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+    <div class="card mt-4">
+        <img class="card-img-top img-fluid" src="@Model.Foto" alt="">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Ad | <span class="badge badge-danger">@Model.Kategori.Ad</span></h2>
+            <h3>@Model.Sirket <span style="font-size:20px;">/ <i class="fa fa-calendar"></i> @Model.Tarih.Value.ToString("dd-MM-yyyy")</span></h3>
+            <h4>Satış fiyatı -  <span class="badge badge-success">@Model.Fiyat ₺</span> </h4>
+                <p class="card-text">
+                  @Model.Icerik
+            </p>
+                <ul>
+                    <li>İşletim Sistemi: 64-bit Windows 7, Windows 8.1 ve Windows 10.</li>
+                    <li>İşlemci (AMD): AMD FX-6350.</li>
+                    <li>İşlemci (Intel): Core i5 6600K.</li>
+                    <li>Bellek: 8GB RAM.</li>
+                    <li>Ekran Kartı (AMD): AMD Radeon HD 7850 2GB.</li>
+                    <li>Ekran Kartı (Nvidia): Nvidia GeForce GTX 660 2GB.</li>
+                    <li>DirectX: 11.0.</li>
+                    <li>Boş Disk Alanı: 50GB.</li>
+                </ul>
+
+
+            @if (Model.Puan == 1)
+            {
+                <i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 2)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 3)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 4)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 5)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 6)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 7)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 8)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 9)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (Model.Puan == 10)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+
+            / <span class="badge badge-info">Puan</span>
+            <br />
+            <br />
+           <a href="/" class="btn btn-warning" style="color:white">Geri Dön</a>
+
+        </div>
+    </div>
+    <!-- /.card -->
+
+    <!-- /.card -->
+
+
+
+

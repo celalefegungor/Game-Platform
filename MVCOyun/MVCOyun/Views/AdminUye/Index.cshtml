@@ -1,0 +1,30 @@
+﻿@model List<MVCOyun.Models.EntityFramework.Uye>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="background-color:black;color:white">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kullanıcı Adı</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+           <tr>
+               <td>@item.id</td>
+               <td><a href="/AdminUye/Detay/@item.id">@item.Kullaniciadi</a></td>
+               <td><a href="/AdminUye/Guncelle/@item.id" class="btn btn-warning" style="color:white"><i class="fa fa-pencil"></i> Güncelle</a></td>
+               <td><a href="/AdminUye/Sil/@item.id" class="btn btn-danger"><i class="fa fa-trash-o"></i> Sil</a></td>               
+           </tr>
+        }
+    </tbody>
+</table>
+<div style="text-align:right">
+    <a href="/AdminUye/Yeni" class="btn btn-primary"><i class="fa fa-user"> Yeni Üye</i></a>
+</div>

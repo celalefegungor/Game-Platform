@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MVCOyun.Models.EntityFramework.Oyun>
+
+@{
+    ViewBag.Title = "KategoriOyun";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@foreach (var item in Model)
+{
+
+
+    <div class="card mt-4">
+        <img class="card-img-top img-fluid" src="@item.Foto" alt="">
+        <div class="card-body">
+            <h2 class="card-title">@item.Ad | <span class="badge badge-danger">@item.Kategori.Ad</span></h2>
+            <h3>@item.Sirket <span style="font-size:20px;">/ <i class="fa fa-calendar"></i> @item.Tarih.Value.ToString("dd-MM-yyyy")</span></h3>
+            <h4>Satış fiyatı -  <span class="badge badge-success">@item.Fiyat ₺</span> </h4>
+            @if (item.Icerik.Length > 350)
+            {
+                <p class="card-text">
+                    @Html.Raw(item.Icerik.Substring(0, 350)) ...<div class="spinner-border text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </p>
+            }
+            else
+            {
+            <p class="card-text">@Html.Raw(item.Icerik)</p>
+            }
+
+
+            @if (item.Puan == 1)
+            {
+                <i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 2)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 3)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 4)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 5)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 6)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 7)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 8)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 9)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            @if (item.Puan == 10)
+            {
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            }
+            / <span class="badge badge-info">Puan</span>
+            <br />
+            <br />
+            <a href="/Home/Detay/@item.id" class="btn btn-success">Devamı..</a>
+
+        </div>
+    </div>
+}
+

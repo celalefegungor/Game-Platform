@@ -1,0 +1,36 @@
+﻿@model MVCOyun.Models.EntityFramework.Uye
+@{
+    ViewBag.Title = "Yeni";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Kaydet", "AdminUye", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.id)
+    <div class="form-group">
+        @Html.LabelFor(x => x.AdSoyad)
+        @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kullaniciadi)
+        @Html.TextBoxFor(x => x.Kullaniciadi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.DogumTarihi)
+        @Html.TextBoxFor(x => x.DogumTarihi, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Foto)
+        <input type="file" id="Foto" name="Foto" accept=".jpeg,.jpg,.gif,.png," class="form-control" />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Sifre)
+        @Html.PasswordFor(x => x.Sifre, new { @class = "form-control" })
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}

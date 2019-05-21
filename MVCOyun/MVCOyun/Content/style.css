@@ -1,0 +1,21 @@
+﻿body {
+     background-image: url('6909249-black-hd-background.jpg');
+}
+
+.navbar{
+    background-color:black !important;
+
+}
+
+.footer {
+    background: #0a0d11 !important;
+}
+
+.input-validation-error{
+   border:solid 5px;
+   color:red;
+}
+
+.field-validation-error {
+    color: yellow;
+}
